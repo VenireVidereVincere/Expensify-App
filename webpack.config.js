@@ -1,12 +1,18 @@
 const path = require("path")
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-module.exports= {
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production'
+  return {
     entry: './src/app.js',
     plugins:[
       new MomentLocalesPlugin({
         localesToKeep:['es-us']
       }),
+      new MiniCssExtractPlugin({ 
+        filename: 'styles.css'
+    })
     ],
     output: {
         filename: "bundle.js",
@@ -23,11 +29,24 @@ module.exports= {
             }
           }, {
             test: /\.s?css$/,
-            use: ['style-loader','css-loader','sass-loader']
-          }               
+            use: [ MiniCssExtractPlugin.loader, 
+              {
+                  loader: 'css-loader',
+                  options: {
+                      sourceMap: true
+                  }
+              },
+              {
+                  loader: 'sass-loader',
+                  options: {
+                      sourceMap: true
+                  }
+              }
+          ]
+        }               
         ]
       },
-      devtool: 'eval-cheap-module-source-map',
+      devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
       devServer: {
         static: "./public",
         compress: true,
@@ -35,3 +54,4 @@ module.exports= {
         historyApiFallback: true
       }
     }
+}
