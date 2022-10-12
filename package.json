@@ -8,7 +8,7 @@
     "build:prod": "webpack --mode production",
     "dev-server": "webpack serve --open",
     "start": "node server/server.js",
-    "heroku-postbuild":"npm run build:prod"
+    "heroku-postbuild": "npm run build:prod"
   },
   "engines": {
     "node": "^12.2.0",
@@ -19,7 +19,6 @@
   "devDependencies": {
     "webpack-dev-server": "^4.11.1",
     "redux-devtools-extension": "^2.13.9"
-
   },
   "dependencies": {
     "@babel/cli": "^7.18.10",
@@ -36,6 +35,7 @@
     "moment-locales-webpack-plugin": "^1.2.0",
     "node-sass": "^7.0.3",
     "normalize.css": "^8.0.1",
+    "numeral": "^2.0.6",
     "react": "^18.2.0",
     "react-dates": "^21.8.0",
     "react-dom": "^18.2.0",
