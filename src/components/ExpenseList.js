@@ -9,7 +9,7 @@ const ExpenseList = () => {
     const filteredExpenses = getVisibleExpenses(expenses,filters)
     return (
     <div>
-        <h1>Expense List</h1>
+        {filteredExpenses.length > 0 ? <h1>Expense List</h1> : <p>No expenses</p>}
         {filteredExpenses.map((expense) => (
             <ExpensesListItem 
             {...expense}
