@@ -15,7 +15,7 @@ const expenseOne = store.dispatch(addExpense({
     note: "Too high",
     createdAt: 1500
 }))
-console.log("app.js is loading")
+
 const expenseTwo = store.dispatch(addExpense({
     description: "Coffee",
     amount: 50,
