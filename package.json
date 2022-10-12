@@ -7,7 +7,8 @@
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
     "dev-server": "webpack serve --open",
-    "test": "jest"
+    "test": "jest",
+    "start": "node server/server.js"
   },
   "author": "",
   "license": "ISC",
