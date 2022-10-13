@@ -1,5 +1,5 @@
 import moment from "moment"
-// Get visible expenses
+// Get visible expenses. First argument is an array of expense objects, second argument is an object with the filters. 
 const getVisibleExpenses = (expenses, {startDate, endDate, sortBy, text}) => {
     return expenses.filter((expense) => {
         const createdMoment = moment(expense.createdAt)
