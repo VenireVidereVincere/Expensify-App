@@ -1,6 +1,6 @@
 import React from "react";
 import ExpenseForm from './ExpenseForm'
-import { addExpense } from "../actions/expenses";
+import { startAddExpense } from "../actions/expenses";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import moment from "moment";
@@ -22,7 +22,7 @@ const AddExpensePage = (props) => {
             expense={defaultState}
             url = {location.pathname}
             onSubmit={(expense) => {
-                dispatch(addExpense(expense))
+                dispatch(startAddExpense(expense))
                 navigate('/')
             }}
         />
