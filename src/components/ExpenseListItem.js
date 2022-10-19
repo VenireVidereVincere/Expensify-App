@@ -1,6 +1,6 @@
 import React from "react"
-import { useSelector, useDispatch } from 'react-redux'
-import { removeExpense } from '../actions/expenses'
+import { useDispatch } from 'react-redux'
+import { startRemoveExpense } from '../actions/expenses'
 import { Link } from "react-router-dom"
 import moment from "moment"
 import numeral from "numeral"
@@ -19,7 +19,7 @@ export default (props) => {
             {moment(props.createdAt).format('Do MMMM YYYY')}
             </p>
             <button onClick={(e) => {
-                dispatch(removeExpense({id:props.id}))
+                dispatch(startRemoveExpense({id:props.id}))
             }}>Remove Item</button>
         </div>
     )

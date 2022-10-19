@@ -18,6 +18,8 @@ export default function expensesReducer (state = expensesReducerDefaultState, ac
                     return expense
                 }
             })
+        case 'SET_EXPENSES':
+            return Object.values(action.expenses)
         default:
             return state;
     }
