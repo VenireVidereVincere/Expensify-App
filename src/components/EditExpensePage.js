@@ -24,7 +24,7 @@ const EditExpensePage = () => {
                     url = {location.pathname}
                     onSubmit={(expense) => {
                         dispatch(startEditExpense(params.id,expense))
-                        navigate('/')
+                        navigate('/dashboard')
                     }}
                 />
             </div>

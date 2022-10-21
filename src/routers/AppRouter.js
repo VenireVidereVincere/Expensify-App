@@ -4,38 +4,64 @@ import AddExpensePage from "../components/AddExpensePage";
 import EditExpensePage from "../components/EditExpensePage";
 import HelpPage from "../components/HelpPage";
 import NotFoundPage from "../components/NotFoundPage"
-import Header from "../components/Header"
+import LoginPage from "../components/LoginPage";
+import PrivateRoute from "../components/PrivateRoute"
+
 import {
     Route,
     Routes,
     BrowserRouter
   } from "react-router-dom";
   
-
+// PrivateRoute is a component which checks for a logged in user and redirects to the login page in case
+// no user is found. 
 const AppRouter = () => (
     <BrowserRouter>
     <div>
-        <Header />
         <Routes>
             <Route 
             path="/"
-            element= {<ExpenseDashboardPage />}
+            element={<LoginPage />}
+            />            
+            <Route 
+            path="/dashboard"
+            element= {
+                <PrivateRoute>
+                    <ExpenseDashboardPage />
+                </PrivateRoute>
+            }
             />
             <Route
             path='/create'
-            element= {<AddExpensePage />}
+            element= {
+                <PrivateRoute>
+                    <AddExpensePage />
+                </PrivateRoute>
+            }
             />
             <Route 
             path='/edit/:id'
-            element={<EditExpensePage />}
+            element={
+                <PrivateRoute>
+                    <EditExpensePage />
+                </PrivateRoute>
+            }
             />
             <Route 
             path='/help'
-            element={<HelpPage />}
+            element={
+                <PrivateRoute>
+                    <HelpPage />
+                </PrivateRoute>
+            }
             />
             <Route 
             path="*"
-            element={<NotFoundPage />}
+            element={
+                <PrivateRoute>
+                    <NotFoundPage />
+                </PrivateRoute>
+            }
             />
         </Routes>
     </div>

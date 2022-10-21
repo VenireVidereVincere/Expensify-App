@@ -23,7 +23,7 @@ const AddExpensePage = (props) => {
             url = {location.pathname}
             onSubmit={(expense) => {
                 dispatch(startAddExpense(expense))
-                navigate('/')
+                navigate('/dashboard')
             }}
         />
     </div>

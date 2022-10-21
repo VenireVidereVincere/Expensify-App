@@ -17,8 +17,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack-dev-server": "^4.11.1",
-    "redux-devtools-extension": "^2.13.9"
+    "dotenv": "^16.0.3",
+    "redux-devtools-extension": "^2.13.9",
+    "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
     "@babel/cli": "^7.18.10",
