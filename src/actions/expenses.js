@@ -32,14 +32,16 @@ export const startAddExpense = ({
     createdAt = 0
     } = {}
         ) => {
-        return async (dispatch) => {
+        return async (dispatch, getState) => {
             const expense = { 
                 description,
                 note,
                 amount,
                 createdAt
             }
-            const newRef = await push(ref(firebaseDb, "expenses"))
+            const uid = getState().auth.uid
+            const refPath = `users/${uid}/expenses`
+            const newRef = await push(ref(firebaseDb, refPath))
             set(newRef,{
                 ...expense
             })
@@ -52,8 +54,10 @@ export const startAddExpense = ({
 
 //START_REMOVE_EXPENSE
 export const startRemoveExpense = ({id}) => {
-    return async (dispatch) => {
-        const refToDelete = ref(firebaseDb, `expenses/${id}`)
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
+        const refPath = `users/${uid}/expenses/${id}`
+        const refToDelete = ref(firebaseDb, refPath)
         await set(refToDelete,null)
         dispatch(removeExpense({id}))
     }
@@ -61,8 +65,10 @@ export const startRemoveExpense = ({id}) => {
 
 //START_EDIT_EXPENSE
 export const startEditExpense = (id, updates = {}) => {
-    return async (dispatch) => {
-        const refToUpdate = ref(firebaseDb, `expenses/${id}`)
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
+        const refPath = `users/${uid}/expenses`
+        const refToUpdate = ref(firebaseDb, refPath)
         await update(refToUpdate,{
             ...updates
         })
@@ -72,8 +78,11 @@ export const startEditExpense = (id, updates = {}) => {
 
 //START_SET_EXPENSES
 export const startSetExpenses = () => {
-    return async (dispatch) => {
-        const dbRef = ref(firebaseDb,"expenses")
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
+        const refPath = `users/${uid}/expenses`
+        const dbRef = ref(firebaseDb,refPath)
+        console.log(refPath)
         const expenses = []
         const snapshot = await get(dbRef)
         if(!snapshot.exists()) {

@@ -31,9 +31,9 @@ onAuthStateChanged(auth, user => {
   if(user) {
     console.log("Logged in")
     console.log(user.uid)
+    store.dispatch(login(user.uid))
     store.dispatch(startSetExpenses()).then(() => {
       renderApp()
-      store.dispatch(login(user.uid))
   })
 
   } else {

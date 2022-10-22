@@ -6,6 +6,7 @@ import HelpPage from "../components/HelpPage";
 import NotFoundPage from "../components/NotFoundPage"
 import LoginPage from "../components/LoginPage";
 import PrivateRoute from "../components/PrivateRoute"
+import PublicRoute from "../components/PublicRoute"
 
 import {
     Route,
@@ -21,7 +22,11 @@ const AppRouter = () => (
         <Routes>
             <Route 
             path="/"
-            element={<LoginPage />}
+            element={
+                <PublicRoute>
+                    <LoginPage />
+                </PublicRoute>
+            }
             />            
             <Route 
             path="/dashboard"
