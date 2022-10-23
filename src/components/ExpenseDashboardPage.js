@@ -10,11 +10,11 @@ const ExpenseDashboardPage = () => {
     const dispatch = useDispatch()
     return (
         <div>
+            <ExpenseSummary />
             <ExpenseListFilters 
             filters = {filters}
             dispatch = {dispatch}
             />
-            <ExpenseSummary />
             <ExpenseList></ExpenseList>
         </div>
     )

@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from './firebase/firebase'
 import { login } from './actions/auth';
-
+import LoadingPage from './components/LoadingPage'
 const container = document.getElementById('app');
 const root = ReactDOM.createRoot(container); 
 
@@ -23,7 +23,7 @@ const renderApp = () => {
     hasRendered = true
 }
 root.render(
-  <p>Loading...</p>
+  <LoadingPage />
   )
 
 const auth = getAuth(app);

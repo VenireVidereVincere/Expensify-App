@@ -2,7 +2,7 @@ import React from "react"
 import { useParams, useNavigate, useLocation } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import ExpenseForm from './ExpenseForm'
-import {startEditExpense} from '../actions/expenses'
+import {startEditExpense, startRemoveExpense} from '../actions/expenses'
 
 const EditExpensePage = () => {    
     const params = useParams()
@@ -18,15 +18,29 @@ const EditExpensePage = () => {
             }
         })
         return (
-            <div>    
-                <ExpenseForm
-                    {...expense}
-                    url = {location.pathname}
-                    onSubmit={(expense) => {
-                        dispatch(startEditExpense(params.id,expense))
-                        navigate('/dashboard')
-                    }}
-                />
+            <div>
+                <div className="page-header">
+                    <div className="content-container">
+                        <h1 className="page-header__title">Edit Expense</h1>
+                    </div>
+                </div>    
+                <div className="content-container">
+                    <ExpenseForm
+                        {...expense}
+                        url = {location.pathname}
+                        onSubmit={(expense) => {
+                            dispatch(startEditExpense(params.id,expense))
+                            navigate('/dashboard')
+                        }}
+                    />
+                    <button 
+                        className="button button--secondary"
+                        onClick={() => {
+                            dispatch(startRemoveExpense({id:expense.expense.id}))
+                            navigate('/dashboard')
+                        }}
+                    >Remove Expense</button>
+                </div>
             </div>
             )        
     } catch (error) {

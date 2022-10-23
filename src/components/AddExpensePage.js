@@ -17,15 +17,21 @@ const AddExpensePage = (props) => {
     }
     return (
     <div>
-        <h1>Add Expense</h1>
-        <ExpenseForm 
-            expense={defaultState}
-            url = {location.pathname}
-            onSubmit={(expense) => {
-                dispatch(startAddExpense(expense))
-                navigate('/dashboard')
-            }}
-        />
+        <div className="page-header">
+            <div className="content-container">
+                <h1 className="page-header__title">Add Expense</h1>
+            </div>
+        </div>
+        <div className="content-container">
+            <ExpenseForm 
+                expense={defaultState}
+                url = {location.pathname}
+                onSubmit={(expense) => {
+                    dispatch(startAddExpense(expense))
+                    navigate('/dashboard')
+                }}
+            />
+        </div>
     </div>
     )
 }

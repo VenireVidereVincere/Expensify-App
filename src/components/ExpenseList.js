@@ -8,14 +8,25 @@ const ExpenseList = () => {
     const filters = useSelector((state) => state.filters)
     const filteredExpenses = getVisibleExpenses(expenses,filters)
     return (
-    <div>
-        {filteredExpenses.length > 0 ? <h1>Expense List</h1> : <p>No expenses</p>}
-        {filteredExpenses.map((expense) => (
-            <ExpensesListItem 
-            {...expense}
-            key={expense.description}
-            />
-        ))}
+    <div className="content-container">
+        <div className="list-header">
+            <div className="show-for-mobile">Expenses</div>
+            <div className="show-for-desktop">Expense</div>
+            <div className="show-for-desktop">Amount</div>
+        </div>
+        <div className="list-body">
+            {filteredExpenses.map((expense) => (
+                <ExpensesListItem 
+                {...expense}
+                key={expense.description}
+                />
+            ))}
+            {filteredExpenses.length === 0 ? 
+                <div className="list-item list-item--message"> 
+                    <span>No Expenses</span>
+                </div>
+                : undefined}
+        </div>
     </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink, useNavigate } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { startLogout } from "../actions/auth"
 const Header = () => {
@@ -7,22 +7,16 @@ const Header = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     return (
-    <header>
-        <h1>Expensify</h1>
-        <div>
-            <NavLink to={'/dashboard'} 
-            className={({isActive}) => isActive ? 'is-active' : undefined}
-            end
-            >Home</NavLink>
-            <NavLink to={'/create'}
-            className={({isActive}) => isActive ? 'is-active' : undefined}
-            >Create Expense</NavLink>
-            <NavLink to={'/help'}
-            className={({isActive}) => isActive ? 'is-active' : undefined}
-            >Help</NavLink>
-            <button onClick={() => {
+    <header className="header">        
+        <div className="content-container">
+            <div className="header__content">
+                <Link className="header__title" to={'/dashboard'}>
+                    <h1>Expensify</h1>
+                </Link>
+                <button className="button button--link" onClick={() => {
                 dispatch(startLogout(navigate, dispatch))
-            }}>Logout</button>
+                }}>Logout</button>
+            </div>
         </div>        
     </header>
     )

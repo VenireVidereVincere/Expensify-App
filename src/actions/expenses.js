@@ -67,7 +67,7 @@ export const startRemoveExpense = ({id}) => {
 export const startEditExpense = (id, updates = {}) => {
     return async (dispatch, getState) => {
         const uid = getState().auth.uid
-        const refPath = `users/${uid}/expenses`
+        const refPath = `users/${uid}/expenses/${id}`
         const refToUpdate = ref(firebaseDb, refPath)
         await update(refToUpdate,{
             ...updates
