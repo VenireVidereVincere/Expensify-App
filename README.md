@@ -1,5 +1,5 @@
 # EXPENSIFY
-#### Video Demo:  <URL HERE>
+#### Video Demo:  https://youtu.be/OIOu4uOOT34
 #### Working App: https://jurado-expensify-app.herokuapp.com/  
 #### Description: This web app is meant to help you keep track of your expenses and filter through whatever time frame you might want to, in order to more easily build a budget.
   I built this app as a Final Project for CS50 utilizing knowledge I gained from the course throughout the first 9 weeks, however I deviated from the initial JS, Python and SQL suggestion towards the MERN stack utilizing JS for the backend, Firebase instead of MongoDB (with the purpose of learning how to use Google Web services and integrating a 3rd party DB into a project), and Express.js as my server instead of flask. 
